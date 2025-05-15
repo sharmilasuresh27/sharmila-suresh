@@ -1,0 +1,67 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+# Simulated dataset
+data = {
+'temperature': [20, 22, 24, 26, 28, 30, 32],
+'energy_usage': [300, 320, 340, 370, 390, 420, 450]
+df = pd.DataFrame(data)
+# Model training
+X = df[['temperature']]
+y = df['energy_usage']
+model = LinearRegression()
+model.fit(X, y)
+# Prediction
+future_temps = np.array([33, 34, 35]).reshape(-1, 1)
+predictions = model.predict(future_temps)
+# Plotting
+plt.figure(figsize=(8,5))
+plt.scatter(df['temperature'], df['energy_usage'], color='blue', label='Actual Usage')
+plt.plot(df['temperature'], model.predict(x), color='green', label='Regression Line')
+plt.scatter(future_temps, predictions, color='red', label='Predicted Usage')
+plt.xlabel("Temperature (C)")
+plt.ylabel("Energy Usage (kWh)")
+plt.title("Energy Consumption Prediction")
+plt.legend()
+plt.grid(True)
+plt.show()
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+# Simulated historical energy usage data (in kWh)
+# Features: [Temperature, Hour of Day, Day of Week (0=Mon ... 6=Sun)]
+X = np.array([
+[30, 14, 0], [25, 10, 1], [20, 18, 2],
+[22, 12, 3], [27, 16, 4], [23, 20, 5],
+[21, 9, 6], [28, 14, 0], [24, 11, 1],
+# Corresponding energy usage (target values)
+y = np.array([120, 90, 80, 95, 110, 100, 85, 115, 92])
+# Train the simple predictive model
+model = LinearRegression()
+model.fit(x, y)
+# Simulated new data for prediction (real-time input)
+new_data . np.array([
+[29, 14, 0], [26, 11, 1], [21, 19, 2]
+
+# Predict energy consumption
+predicted_usage = model.predict(new_data)
+# Apply optimization (reduce predicted usage by estimated 15%)
+optimized_usage = predicted_usage * 0.85
+# Bar Graph: Before and After Optimization
+labels . ['Scenario 1', 'Scenario 2', 'Scenario 3']
+x = np.arange(len(labels))
+width = 0.35
+fig, ax = plt.subplots()
+bars1 . ax.bar(x - width/2, predicted_usage, width, label='Predicted Usage (kWh)', color='skyblue')
+bars2 = ax.bar(x + width/2, optimized_usage, width, label='Optimized Usage (kWh)', color='lightgreen'
+# LabeLing
+ax.set_xlabel('Test Scenarios')
+ax.set_ylabel('Energy Usage (kWlh)')
+ax.set_title('Energy Consumption: Predicted vs Optimized')
+ax.set_xticks(x)
+ax.set_xticklabels(labels)
+ax.legend()
+# DispLay graph
+plt.tight_layout()
+plt. show()

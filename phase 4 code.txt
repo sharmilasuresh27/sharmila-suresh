@@ -1,0 +1,43 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+
+# Simulated historical energy load data (in kwh)
+hours = np.array(range(24)).reshape(-1, 1) # Hours of the day
+load = np.array([30, 28, 25, 23, 22, 25, 30, 40, 55, 60, 65, 70, 75, 73, 70, 68, 65, 60, 55, 50, 45, 40, 35, 32])
+# Train a linear regression model
+model = LinearRegression()
+model.fit(hours, load)
+predicted = model.predict(hours)
+
+# Plotting
+plt.figure(figsize=(10, 5))
+plt.plot(hours, load, label='Actual Load', marker='o')
+plt.plot(hours, predicted, label='Predicted Load (Linear Regression)', linestyle=' .. ')
+plt.xlabel('Hour of Day')
+plt.ylabel('Energy Load (kllh)')
+plt.title('Energy Load Prediction')
+plt.legend()
+plt.grid(True)
+plt.show()
+import matplotlib.pyplot as plt
+import numpy as np
+# Sample energy usage (kwh) across 7 days before and after optimization
+days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'sat', 'Sun']
+before = np.array([120, 130, 125, 135, 140, 150, 145])
+after = before * np.random.uniform(0.85, 0.92, size=7) # Simulate 8-15% optimization
+
+# Plotting
+x = np.arange(len(days))
+width = 0.35
+
+fig, ax = plt.subplots(figsize=(10, 5))
+ax.bar(x - width/2, before, width, label='Before Optimization')
+ax.bar(x + width/2, after, width, label='After Optimization')
+ax.set_ylabel('Energy Usage (kwh)')
+ax.set_title('Energy Usage Before and After Optimization')
+ax.set_xticks(x)
+ax.set_xticklabels(days)
+ax.legend()
+plt.grid(True, axis='y')
+plt.show()
